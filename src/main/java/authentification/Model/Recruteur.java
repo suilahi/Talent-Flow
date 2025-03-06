@@ -3,8 +3,8 @@ package authentification.Model;
 public class Recruteur extends User {
     private String company;
 
-    public Recruteur(String name, String email, String password, String company) {
-        super(name, email, password, UserRole.RECRUITER);
+    public Recruteur(String name, String email, String password,String role ,String company) {
+        super(name, email, password, role);
         this.company = company;
     }
 
