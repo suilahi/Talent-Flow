@@ -1,11 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: IMANE
-  Date: 06/03/2025
-  Time: 14:56
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="authentification.Model.User"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%
+    HttpSession sessionObj = request.getSession(false);
+    User users = (sessionObj != null) ? (User) sessionObj.getAttribute("user") : null;
+
+    if (users == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+%>
 <html>
 <head>
     <title>Title</title>
