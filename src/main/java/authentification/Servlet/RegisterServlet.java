@@ -44,7 +44,7 @@ public class RegisterServlet {
         try {
             userDAO.getAllUsers();
         } catch (SQLException e) {
-
         }
+
     }
 }
