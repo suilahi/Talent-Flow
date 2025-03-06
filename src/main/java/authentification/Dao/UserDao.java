@@ -12,14 +12,16 @@ import java.util.List;
 import Utils.DBConnection;
 
 public class UserDao {
+
     private Connection connection;
 
     public UserDao(Connection connection) {
         this.connection = connection;
     }
 
+
     public void addUser(User user) throws SQLException {
-        String query = "INSERT INTO users (name,  email,Mot_de_passe, role) VALUES ( ?, ?, ?, ?)";
+        String query = "INSERT INTO users (name,email,password,role) VALUES ( ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, user.getName());
@@ -27,6 +29,8 @@ public class UserDao {
             stmt.setString(3, user.getPassword());
             stmt.setString(4, String.valueOf(user.getRole()));
             stmt.executeUpdate();
+
+
         }
     }
 
@@ -41,7 +45,7 @@ public class UserDao {
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        rs.getString("phone")
+                        rs.getString("role")
                 );
                 users.add(u);
             }
@@ -67,7 +71,7 @@ public class UserDao {
         }
     }
     public void updateUser(User user) throws SQLException {
-        String query = "UPDATE users SET name = ?, Mot_de_passe = ?, role = ? WHERE email = ?";
+        String query = "UPDATE users SET name = ?, password = ?, role = ? WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, user.getName());
