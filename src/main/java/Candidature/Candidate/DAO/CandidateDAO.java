@@ -11,6 +11,7 @@ import java.util.List;
 public class CandidateDAO {
 
     private Connection connection;
+    private Boolean role;
 
     public CandidateDAO() throws SQLException {
         connection = DBConnection.getConnection();
@@ -47,12 +48,13 @@ public class CandidateDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+
                 candidate = new CandidateModel(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        User.UserRole.valueOf(rs.getString("role")),
+                        rs.getString("role"),
                         rs.getString("cv")
                 );
             }
@@ -76,8 +78,7 @@ public class CandidateDAO {
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        User.UserRole.valueOf(rs.getString("role")),
-                        rs.getString("cv")
+                        rs.getString("role")
                 ));
             }
         } catch (SQLException e) {

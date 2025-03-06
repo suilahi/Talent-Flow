@@ -34,7 +34,7 @@ public class CandidateServlet extends HttpServlet {
         String roleStr = request.getParameter("role");
         String cv = request.getParameter("cv");
 
-        User.UserRole role = User.UserRole.valueOf(roleStr.toUpperCase());
+        User.role role = User.UserRole.valueOf(roleStr.toUpperCase());
         System.out.println(roleStr);
 
         CandidateModel candidate = new CandidateModel(name, email, password, role, cv);

@@ -7,22 +7,18 @@ public class CandidateModel extends User {
 
     private String cv ;
 
-    public CandidateModel(int id, String name, String email, String password, UserRole role, String cv) {
+    public CandidateModel(String name, String email, String password, role role, String cv) {
+        super(name, email, password, role);
+        this.cv = cv;
+    }
+
+    public CandidateModel(int id, String name, String email, String password, String role, String cv) {
         super(id, name, email, password, role);
         this.cv = cv;
     }
 
-    public CandidateModel(String name, String email, String password, UserRole userRole, String cv) {
-        super(name, email, password, userRole != null ? userRole : UserRole.CANDIDATE);
-        this.cv = cv;
-    }
-
-
     public CandidateModel(String cv) {
         this.cv = cv;
-    }
-
-    public CandidateModel() {
     }
 
     public String getCv() {
