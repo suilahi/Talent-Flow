@@ -2,7 +2,6 @@ package Candidature.Candidate.DAO;
 
 import Candidature.Candidate.Model.CandidateModel;
 import Utils.DBConnection;
-import authentification.Model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,8 +26,7 @@ public class CandidateDAO {
             stmt.setString(1, candidate.getName());
             stmt.setString(2, candidate.getEmail());
             stmt.setString(3, candidate.getPassword());
-            String role = (candidate.getRole() != null) ? candidate.getRole().toString() : "CANDIDATE";
-            stmt.setString(4, role);
+            stmt.setString(4, candidate.getRole());
             stmt.setString(5, candidate.getCv());
 
             stmt.executeUpdate();
@@ -48,12 +46,10 @@ public class CandidateDAO {
 
             if (rs.next()) {
                 candidate = new CandidateModel(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        User.UserRole.valueOf(rs.getString("role")),
-                        rs.getString("cv")
+                        rs.getString("role")
                 );
             }
         } catch (SQLException e) {
@@ -72,13 +68,11 @@ public class CandidateDAO {
 
             while (rs.next()) {
                 candidates.add(new CandidateModel(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-                        User.UserRole.valueOf(rs.getString("role")),
-                        rs.getString("cv")
-                ));
+                        rs.getString("role"))
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();

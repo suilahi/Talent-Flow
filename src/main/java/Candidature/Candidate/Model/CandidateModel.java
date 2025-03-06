@@ -7,13 +7,12 @@ public class CandidateModel extends User {
 
     private String cv ;
 
-    public CandidateModel(int id, String name, String email, String password, UserRole role, String cv) {
-        super(id, name, email, password, role);
-        this.cv = cv;
+    public CandidateModel(String name, String email, String password, String role) {
+        super(name, email, password, role);
     }
 
-    public CandidateModel(String name, String email, String password, UserRole userRole, String cv) {
-        super(name, email, password, userRole != null ? userRole : UserRole.CANDIDATE);
+    public CandidateModel(String name, String email, String password, String role, String cv) {
+        super(name, email, password, role );
         this.cv = cv;
     }
 
@@ -24,6 +23,8 @@ public class CandidateModel extends User {
 
     public CandidateModel() {
     }
+
+
 
     public String getCv() {
         return cv;

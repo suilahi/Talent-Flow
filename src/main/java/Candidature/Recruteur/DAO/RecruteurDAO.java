@@ -70,7 +70,7 @@ public class RecruteurDAO {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
-                        "", // Ne pas récupérer le mot de passe
+                        rs.getString("password"), // Ne pas récupérer le mot de passe
                         rs.getString("company")
                 ));
             }
