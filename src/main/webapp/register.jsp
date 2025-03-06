@@ -56,7 +56,7 @@
 <body>
 <div class="register-container">
     <h2>Créer un Compte</h2>
-    <form action="RegisterServlet" method="post">
+    <form action="Register" method="post">
         <div class="mb-3">
             <input type="text" name="name" class="form-control" placeholder="Nom complet" required>
         </div>

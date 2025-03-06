@@ -32,10 +32,10 @@ public class RegisterServlet {
 
         try {
             userDAO.addUser(users);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("inscription.jsp");
+            response.sendRedirect("register.jsp");
         }
     }
 
