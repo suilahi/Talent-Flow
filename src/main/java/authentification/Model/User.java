@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class User {
 
-
     private int id;
     private String name;
     private String email;
@@ -15,7 +14,7 @@ public class User {
 
 
 
-    public User(int id,String name, String email) {
+    public User(int id,String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -23,9 +22,6 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-<<<<<<< HEAD
-    public User(String name, String email){
-=======
     public User(String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
@@ -34,7 +30,6 @@ public class User {
     }
 
     public User(){
->>>>>>> 58a1f5e19622a5bd24afe482a9ee0f9616229d75
     }
 
 
