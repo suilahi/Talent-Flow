@@ -8,7 +8,6 @@ public class Recruteur extends User {
         this.company = company;
     }
 
-    // Getters and Setters
     public String getCompany() {
         return company; }
 

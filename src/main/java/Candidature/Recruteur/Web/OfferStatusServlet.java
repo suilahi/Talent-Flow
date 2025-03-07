@@ -1,7 +1,7 @@
 package Candidature.Recruteur.Web;
 
 import Candidature.Recruteur.DAO.OfferStatusDAO;
-import Recruteur.Model.OfferStatusModel;
+import Candidature.Recruteur.Model.OfferStatusModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
