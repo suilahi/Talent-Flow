@@ -14,12 +14,8 @@ public class CandidateDAO {
         connection = DBConnection.getConnection();
     }
 
-<<<<<<< HEAD
-=======
-    public void addCandidate(CandidateModel candidate) {
+    public void addCandidate(CandidateModel candidate) throws SQLException {
         String sql = "INSERT INTO candidates (name, email, password, role, cv) VALUES (?, ?, ?, ?, ?)";
-
-
 
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -28,74 +24,25 @@ public class CandidateDAO {
             stmt.setString(3, candidate.getPassword());
             stmt.setString(4, candidate.getRole());
             stmt.setString(5, candidate.getCv());
->>>>>>> 58a1f5e19622a5bd24afe482a9ee0f9616229d75
 
-    // postuler a une offre d'emploi
-    public void Postuler(CandidateModel candidate) {
+            // postuler a une offre d'emploi
+            public void Postuler (CandidateModel candidate){
 
-<<<<<<< HEAD
-        String sql = "INSERT INTO candidates (phone, cv) VALUES (?, ?)";
+                String sql = "INSERT INTO candidates (phone, cv) VALUES (?, ?)";
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-=======
-    public CandidateModel getCandidateById(int id) {
-        String sql = "SELECT * FROM candidates WHERE id = ?";
-        CandidateModel candidate = null;
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                candidate = new CandidateModel(
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getString("role")
-                );
+                try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                    stmt.setString(1, candidate.getPhone());
+                    stmt.setString(2, candidate.getCv());
+                    stmt.executeUpdate();
+                }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return candidate;
-    }
-
-    public List<CandidateModel> getAllCandidates() {
-        List<CandidateModel> candidates = new ArrayList<>();
-        String sql = "SELECT * FROM candidates";
-
-        try (Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            while (rs.next()) {
-                candidates.add(new CandidateModel(
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getString("role"))
-                );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return candidates;
-    }
-
-    public void updateCandidate(CandidateModel candidate) {
-        String sql = "UPDATE candidates SET name = ?, email = ?, password = ?, role = ?, cv = ? WHERE id = ?";
->>>>>>> 58a1f5e19622a5bd24afe482a9ee0f9616229d75
-
-            stmt.setString(1, candidate.getPhone());
-            stmt.setString(2, candidate.getCv());
-
-            stmt.executeUpdate();
-            System.out.println("Candidature ajoutée avec succès !");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
-
 }
+
+
+
+
 //    // Récupérer un candidat par ID
 //    public CandidateModel getCandidateById(int id) {
 //        String sql = "SELECT * FROM candidates WHERE id = ?";
@@ -158,6 +105,3 @@ public class CandidateDAO {
 //            e.printStackTrace();
 //        }
 //    }
-
-
-
