@@ -131,13 +131,13 @@
                         <h2 class="job-title">${job.title}</h2>
                         <p class="job-description">${job.description}</p>
                         <p><strong>Date de publication :</strong> ${job.publicationDate}</p>
-                        <a href="applyJob?jobId=${job.id}" class="btn btn-apply">Postuler</a>
+                        <a href="registerCandidature.jsp" class="btn btn-apply">Postuler</a>
                     </div>
                 </div>
             </c:forEach>
             <c:if test="${empty jobOffers}">
                 <div class="col-12 text-center">
-                    <p>Aucune offre d'emploi disponible pour le moment.</p>
+                    <p>Aucune offre d emploi disponible pour le moment.</p>
                 </div>
             </c:if>
         </div>

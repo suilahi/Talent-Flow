@@ -73,7 +73,7 @@
                 <option value="recruiter">Recruteur</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-register">S'inscrire</button>
+        <button type="submit" class="btn btn-register">S inscrire</button>
     </form>
     <p class="mt-3">Déjà inscrit ? <a href="login.jsp">Se connecter</a></p>
 </div>

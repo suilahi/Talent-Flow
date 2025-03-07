@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/addCandidate")
+@WebServlet("/CandidateServlet")
 public class CandidateServlet extends HttpServlet {
 
     private CandidateDAO candidateDAO;
@@ -28,17 +28,24 @@ public class CandidateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String Role = request.getParameter("role");
+
+
+
+
+
+        String phone = request.getParameter("phone");
         String cv = request.getParameter("cv");
 
+        System.out.println("Valeur de phone: " + request.getParameter("phone"));
+        System.out.println("Valeur de cv: " + request.getParameter("cv"));
 
-        CandidateModel candidate = new CandidateModel(name, email, password,Role, cv);
-        candidateDAO.addCandidate(candidate);
 
-        response.sendRedirect("success.jsp");
+
+        CandidateModel candidate = new CandidateModel("NomParDefaut", "EmailParDefaut", phone, cv);
+
+        candidateDAO.Postuler(candidate);
+
+        response.sendRedirect("dashbordCondidature.jsp");
     }
 }
 

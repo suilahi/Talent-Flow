@@ -13,9 +13,11 @@ CREATE TABLE users (
 -- Candidates Table (inherits from users)
 CREATE TABLE candidates (
                             id INT ,
+
                             phone VARCHAR(15),
                             cv VARCHAR(255),
-                            FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
+                            FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE,
+
 );
 
 -- Recruiters Table (inherits from users)
