@@ -14,6 +14,7 @@ public class OfferStatusDAO {
         this.connection = DBConnection.getConnection();
     }
 
+
     public List<OfferStatusModel> getCandidaturesByJob(int jobId, String filter, String sort) {
         List<OfferStatusModel> candidatures = new ArrayList<>();
         String sql = "SELECT * FROM offer_status WHERE job_id = ?";
@@ -46,5 +47,6 @@ public class OfferStatusDAO {
         }
         return candidatures;
     }
+
     
 }
