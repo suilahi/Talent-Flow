@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class OfferStatusDAO {
     private Connection connection;
 
@@ -46,5 +45,8 @@ public class OfferStatusDAO {
             e.printStackTrace();
         }
         return candidatures;
+    }
+
+    public void updateStatus(int candidatureId, String newStatus) {
     }
 }
