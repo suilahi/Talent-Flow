@@ -15,7 +15,6 @@ public class CandidateDAO {
         connection = DBConnection.getConnection();
     }
 
-    // Ajouter un candidat
     public void addCandidate(CandidateModel candidate) {
         String sql = "INSERT INTO candidates (name, email, password, role, cv) VALUES (?, ?, ?, ?, ?)";
 
@@ -35,7 +34,6 @@ public class CandidateDAO {
         }
     }
 
-    // Récupérer un candidat par ID
     public CandidateModel getCandidateById(int id) {
         String sql = "SELECT * FROM candidates WHERE id = ?";
         CandidateModel candidate = null;
@@ -58,7 +56,6 @@ public class CandidateDAO {
         return candidate;
     }
 
-    // Récupérer tous les candidats
     public List<CandidateModel> getAllCandidates() {
         List<CandidateModel> candidates = new ArrayList<>();
         String sql = "SELECT * FROM candidates";
@@ -80,7 +77,6 @@ public class CandidateDAO {
         return candidates;
     }
 
-    // Mettre à jour un candidat
     public void updateCandidate(CandidateModel candidate) {
         String sql = "UPDATE candidates SET name = ?, email = ?, password = ?, role = ?, cv = ? WHERE id = ?";
 
