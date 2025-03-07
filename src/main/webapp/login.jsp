@@ -56,7 +56,7 @@
 <body>
 <div class="login-container">
     <h2>Connexion</h2>
-    <form action="Login" method="post">
+    <form action="login" method="post">
         <div class="mb-3">
             <input type="email" name="email" class="form-control" placeholder="Email" required>
         </div>
