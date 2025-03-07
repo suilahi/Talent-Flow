@@ -7,13 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class OfferStatusDAO {
     private Connection connection;
 
     public OfferStatusDAO() throws SQLException {
         this.connection = DBConnection.getConnection();
     }
-
 
     public List<OfferStatusModel> getCandidaturesByJob(int jobId, String filter, String sort) {
         List<OfferStatusModel> candidatures = new ArrayList<>();
@@ -47,6 +47,4 @@ public class OfferStatusDAO {
         }
         return candidatures;
     }
-
-    
 }
