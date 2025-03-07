@@ -11,9 +11,7 @@ public class User {
     private String role;
     private LocalDateTime createdAt;
 
-    public User(String name, String email, String password, String role) {
 
-    }
 
 
     public User(int id,String name, String email, String password, String role) {
@@ -22,6 +20,13 @@ public class User {
         this.password = password;
         this.role = role;
         this.createdAt = LocalDateTime.now();
+    }
+
+    public User(String name, String email, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public User(){

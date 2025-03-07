@@ -15,23 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/register")
-public class RegisterServlet {
+public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("motdepasse");
-        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
         String role = request.getParameter("role");
 
         User users = new User(name,email,password,role);
-        UserDao userDAO = null;
-        userDAO = new UserDao(DBConnection.getConnection());
+
+        System.out.println("Received name: " + name);
+
 
         try {
-            userDAO.addUser(users);
+            UserDao.addUser(users);
             response.sendRedirect("login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,12 +39,4 @@ public class RegisterServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
-        UserDao userDAO = new UserDao(DBConnection.getConnection());
-        try {
-            userDAO.getAllUsers();
-        } catch (SQLException e) {
-        }
-
-    }
 }
