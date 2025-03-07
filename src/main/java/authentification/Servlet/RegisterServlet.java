@@ -26,18 +26,12 @@ public class RegisterServlet extends HttpServlet {
         String role = request.getParameter("role");
 
         User users = new User(name,email,password,role);
-        UserDao userDAO = null;
 
         System.out.println("Received name: " + name);
 
-        try {
-            userDAO = new UserDao(DBConnection.getConnection());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
         try {
-            userDAO.addUser(users);
+            UserDao.addUser(users);
             response.sendRedirect("login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,17 +39,4 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDao userDAO = null;
-        try {
-            userDAO = new UserDao(DBConnection.getConnection());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            userDAO.getAllUsers();
-        } catch (SQLException e) {
-        }
-
-    }
 }

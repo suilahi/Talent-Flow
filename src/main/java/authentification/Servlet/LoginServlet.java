@@ -13,27 +13,39 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.*;
 
+
+
 @WebServlet("/login")
-public class LoginServlet {
+public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        Connection connection = DBConnection.getConnection();
+        Connection connection= null;
+        try {
+            connection = DBConnection.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         UserDao userDao = new UserDao(connection);
 
         try {
-            User users = UserDao.getUserByEmail(email);
+            User user = userDao.getUserByEmail(email);
 
-            if (users != null && users.getPassword().equals(password)) {
+            if (user != null && user.getPassword().equals(password)) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user", users);
-                session.setAttribute("role", users.getRole());
+                session.setAttribute("user", user);
+            } else {
+                response.sendRedirect("login.jsp");
+                System.out.println("error");
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("index.jsp");
         }
-    }
+        }
+
+
 }
