@@ -5,13 +5,16 @@ import authentification.Model.User;
 public class RecruteurModel extends User {
     private String company; // Correspond à la colonne 'company' dans la table recruiters
 
-    public RecruteurModel() {
-        super();
+
+
+    public RecruteurModel(int id, String name, String email, String password,String role ,String company) {
+        super(id, name, email);
+        this.company = company;
     }
 
     public RecruteurModel(int id, String name, String email, String password, String company) {
-        super(id, name, email, password, UserRole.RECRUITER);
-        this.company = company;
+
+        super(name, email);
     }
 
     public String getCompany() {

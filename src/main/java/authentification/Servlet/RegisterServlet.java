@@ -15,36 +15,47 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/register")
-public class RegisterServlet {
+public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("motdepasse");
-        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
         String role = request.getParameter("role");
 
         User users = new User(name,email,password,role);
         UserDao userDAO = null;
-        userDAO = new UserDao(DBConnection.getConnection());
+
+        System.out.println("Received name: " + name);
+
+        try {
+            userDAO = new UserDao(DBConnection.getConnection());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             userDAO.addUser(users);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("inscription.jsp");
+            response.sendRedirect("register.jsp");
         }
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
-        UserDao userDAO = new UserDao(DBConnection.getConnection());
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserDao userDAO = null;
+        try {
+            userDAO = new UserDao(DBConnection.getConnection());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         try {
             userDAO.getAllUsers();
         } catch (SQLException e) {
-
         }
+
     }
 }

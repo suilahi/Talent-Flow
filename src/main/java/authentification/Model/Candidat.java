@@ -5,8 +5,8 @@ public class Candidat extends User{
     private String name;
     private String phone;
 
-    public Candidat(int id, String name, String email, String password, UserRole role) {
-        super(id,name,email,password,role);
+    public Candidat(int id, String name, String email, String password, String role) {
+        super(id,name,email);
     }
 
     public String getPhone() {

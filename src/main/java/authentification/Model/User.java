@@ -17,7 +17,7 @@ public class User {
     }
 
 
-    public User(int id,String name, String email, String password, String role) {
+    public User(int id,String name, String email) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -25,7 +25,7 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    public User(){
+    public User(String name, String email){
     }
 
 
