@@ -47,7 +47,7 @@ public class OffreEmploiServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid offer ID");
+            response.sendError(Integer.parseInt("Invalid offer ID"));
         }
     }
 
