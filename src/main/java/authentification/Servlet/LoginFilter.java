@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 
-@WebFilter({"/candidat.jsp","/OffreEmploi.jsp"})
+@WebFilter({"/candidat.jsp","/offerEmploi.jsp"})
 public class LoginFilter  implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

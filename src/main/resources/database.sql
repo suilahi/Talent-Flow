@@ -10,7 +10,7 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Candidates Table (inherits from users)
+
 CREATE TABLE candidates (
                             id INT ,
 
@@ -20,7 +20,7 @@ CREATE TABLE candidates (
 
 );
 
--- Recruiters Table (inherits from users)
+
 CREATE TABLE recruiters (
                             id INT ,
                             company VARCHAR(255),
