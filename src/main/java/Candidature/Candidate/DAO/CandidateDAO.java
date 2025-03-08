@@ -1,41 +1,30 @@
 package Candidature.Candidate.DAO;
 
-import Candidature.Candidate.Model.CandidateModel;
 import Utils.DBConnection;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class CandidateDAO {
 
     private Connection connection;
 
-    public CandidateDAO() throws SQLException {
-        connection = DBConnection.getConnection();
+    public CandidateDAO() throws  SQLException {
+        this.connection = DBConnection.getConnection();
     }
 
-    public void addCandidate(CandidateModel candidate) throws SQLException {
-        String sql = "INSERT INTO candidates (name, email, password, role, cv) VALUES (?, ?, ?, ?, ?)";
+    //POSTULER A UNE CANDIDATURE
 
+    public void Postuler(int job_id,int candidate_id) {
+        String sql = "insert into offer_status (job_id , candidate_id) values (?,?)";
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, candidate.getName());
-            stmt.setString(2, candidate.getEmail());
-            stmt.setString(3, candidate.getPassword());
-            stmt.setString(4, candidate.getRole());
-            stmt.setString(5, candidate.getCv());
-
-            // postuler a une offre d'emploi
-            public void Postuler (CandidateModel candidate){
-
-                String sql = "INSERT INTO candidates (phone, cv) VALUES (?, ?)";
-
-                try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                    stmt.setString(1, candidate.getPhone());
-                    stmt.setString(2, candidate.getCv());
-                    stmt.executeUpdate();
-                }
-            }
+        try (PreparedStatement stmt =connection.prepareStatement(sql)) {
+            stmt.setInt(1, job_id);
+            stmt.setInt(2, candidate_id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }
@@ -105,3 +94,4 @@ public class CandidateDAO {
             e.printStackTrace();
         }
     }
+
