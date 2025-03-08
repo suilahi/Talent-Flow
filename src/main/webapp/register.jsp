@@ -11,20 +11,47 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to right, #90CAF9, #B2DFDB);
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #607D8B;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: #FAFAFA !important;
+            transition: transform 0.3s;
+        }
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            color: #FAFAFA !important;
+            font-weight: 400;
+            margin: 0 10px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #90CAF9;
+            color: #FFFFFF !important;
         }
         .register-container {
             background: white;
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
             max-width: 400px;
+            width: 100%;
             text-align: center;
             animation: fadeIn 1s ease-in-out;
+            margin: auto;
         }
         .register-container h2 {
             margin-bottom: 20px;
@@ -35,25 +62,58 @@
             border-radius: 10px;
         }
         .btn-register {
-            background-color: #42A5F5;
+            background-color: #90CAF9;
             border: none;
-            border-radius: 10px;
+            border-radius: 20px;
             padding: 10px;
             color: white;
             width: 100%;
-            transition: 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .btn-register:hover {
-            background-color: #1E88E5;
+            background-color: #42A5F5;
             transform: scale(1.05);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        footer {
+            background-color: #00695C;
+            color: #FAFAFA;
+            padding: 25px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav { text-align: center; }
+            .nav-link { margin: 5px 0; }
+        }
     </style>
 </head>
 <body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="index.jsp">TalentFlow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="offerEmploi.jsp">Offres d'Emploi</a></li>
+                <li class="nav-item"><a class="nav-link" href="Offrelist.jsp">Liste des Offres</a></li>
+                <li class="nav-item"><a class="nav-link" href="candidat.jsp">Espace Candidat</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.jsp">Inscription</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Register Form -->
 <div class="register-container">
     <h2>Créer un Compte</h2>
     <form action="register" method="post">
@@ -77,5 +137,15 @@
     </form>
     <p class="mt-3">Déjà inscrit ? <a href="login.jsp">Se connecter</a></p>
 </div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>© 2025 TalentFlow. Tous droits réservés.</p>
+        <p>Contactez-nous : support@talentflow.com | +33 (0)1 23 45 67 89</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/jobOffers")
@@ -21,7 +20,6 @@ public class OffreEmploiServlet extends HttpServlet {
     public void init() throws ServletException {
         try {
             offreEmploiDAO = new OffreEmploiDAO();
-
         } catch (SQLException e) {
             throw new ServletException("Unable to initialize DAO", e);
         }
@@ -30,30 +28,26 @@ public class OffreEmploiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        List<OffreEmploi> offres ;
+
         try {
-            offres = offreEmploiDAO.getAllOffres();
-            System.out.println(offres.get(0).toString());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        for (OffreEmploi offre : offres) {
-            System.out.println(offre.toString());
-        }
-        try {
-            if ("list".equals(action)) {
-                List<OffreEmploi> offress = offreEmploiDAO.getAllOffres();
-                request.setAttribute("offers", offress);
-                System.out.println(offres);
-                request.getRequestDispatcher("/jobOffersList.jsp").forward(request, response);
-            } else if ("view".equals(action)) {
+            if ("list".equals(action) || action == null) { // Default to list
+                List<OffreEmploi> offres = offreEmploiDAO.getAllOffres();
+                request.setAttribute("offreEmploi", offres); // Matches offerEmploi.jsp
+                request.getRequestDispatcher("/offerEmploi.jsp").forward(request, response);
+            } else if ("edit".equals(action)) { // Load offer for editing
                 int id = Integer.parseInt(request.getParameter("id"));
                 OffreEmploi offre = offreEmploiDAO.getOffreById(id);
-                request.setAttribute("offer", offre);
-                request.getRequestDispatcher("/OffreEmploi.jsp").forward(request, response);
+                if (offre != null) {
+                    request.setAttribute("offre", offre); // Matches updateOffer.jsp
+                    request.getRequestDispatcher("/updateOffer.jsp").forward(request, response);
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Offer not found");
+                }
             }
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid offer ID");
         }
     }
 
@@ -67,16 +61,29 @@ public class OffreEmploiServlet extends HttpServlet {
                 String description = request.getParameter("description");
                 int recruiterId = Integer.parseInt(request.getParameter("recruiter_id"));
 
+                if (title == null || description == null || title.trim().isEmpty() || description.trim().isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Title and description are required");
+                    return;
+                }
+
                 OffreEmploi offre = new OffreEmploi(title, description, recruiterId);
                 offreEmploiDAO.createOffre(offre);
                 response.sendRedirect("jobOffers?action=list");
 
-
             } else if ("update".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                OffreEmploi offre = offreEmploiDAO.getOffreById(id);
-                request.setAttribute("offre", offre);
-                request.getRequestDispatcher("/updateJobOffer.jsp").forward(request, response);
+                String title = request.getParameter("title");
+                String description = request.getParameter("description");
+                int recruiterId = Integer.parseInt(request.getParameter("recruiter_id"));
+
+                if (title == null || description == null || title.trim().isEmpty() || description.trim().isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Title and description are required");
+                    return;
+                }
+
+                OffreEmploi offre = new OffreEmploi(id, title, description, recruiterId);
+                offreEmploiDAO.updateOffre(offre);
+                response.sendRedirect("jobOffers?action=list");
 
             } else if ("delete".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -85,10 +92,9 @@ public class OffreEmploiServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
         }
     }
 }
-
-
-
 

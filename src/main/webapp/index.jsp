@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TalentFlow - Toutes les Offres d'Emploi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -17,10 +18,7 @@
         }
         .navbar {
             background-color: #607D8B; /* Slate Gray */
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 1rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
@@ -35,17 +33,17 @@
         .nav-link {
             color: #FAFAFA !important; /* Pale Ivory */
             font-weight: 400;
-            margin: 0 15px;
+            margin: 0 10px;
             padding: 8px 15px;
             border-radius: 20px;
             transition: background-color 0.3s, color 0.3s;
         }
         .nav-link:hover {
             background-color: #90CAF9; /* Soft Blue */
-            color: #FAFAFA !important;
+            color: #FFFFFF !important;
         }
         .navbar-toggler {
-            border-color: #FAFAFA; /* Pale Ivory */
+            border-color: #FAFAFA;
         }
         .jobs-section {
             padding: 60px 0;
@@ -97,30 +95,57 @@
             color: #FAFAFA; /* Pale Ivory */
             padding: 25px 0;
             margin-top: 60px;
+            text-align: center;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            .nav-link {
+                margin: 5px 0;
+            }
+            .job-card {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
-<!-- Barre de navigation -->
+<!-- Responsive Navbar with All Links -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="#">TalentFlow</a>
+        <a class="navbar-brand" href="index.jsp">TalentFlow</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="offerEmploi.jsp">Offres d'Emploi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Offrelist.jsp">Liste des Offres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="candidat.jsp">Espace Candidat</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.jsp">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.jsp">Inscription</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Section des offres d'emploi -->
+<!-- Jobs Section -->
 <section class="jobs-section">
     <div class="container">
         <h1 class="text-center mb-5" style="font-weight: 600;">Toutes les Offres d'Emploi</h1>
@@ -144,8 +169,8 @@
     </div>
 </section>
 
-<!-- Pied de page -->
-<footer id="contact" class="text-center">
+<!-- Footer -->
+<footer>
     <div class="container">
         <p>© 2025 TalentFlow. Tous droits réservés.</p>
         <p>Contactez-nous : support@talentflow.com | +33 (0)1 23 45 67 89</p>

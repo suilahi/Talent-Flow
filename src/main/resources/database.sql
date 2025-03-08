@@ -10,7 +10,7 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Candidates Table (inherits from users)
+
 CREATE TABLE candidates (
                             id INT ,
                             phone VARCHAR(15),
@@ -18,7 +18,7 @@ CREATE TABLE candidates (
                             FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Recruiters Table (inherits from users)
+
 CREATE TABLE recruiters (
                             id INT ,
                             company VARCHAR(255),
