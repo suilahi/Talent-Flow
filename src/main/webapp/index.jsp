@@ -156,7 +156,10 @@
                         <h2 class="job-title">${job.title}</h2>
                         <p class="job-description">${job.description}</p>
                         <p><strong>Date de publication :</strong> ${job.publicationDate}</p>
-                        <a href="registerCandidature.jsp" class="btn btn-apply">Postuler</a>
+                        <form action="postuler" method="post">
+                            <input type="hidden" name="jobId" value="<%= job.getId() %>">
+                            <a href="dashbordCondidature.jsp" class="btn btn-apply" >Postuler</a>
+                        </form>
                     </div>
                 </div>
             </c:forEach>
