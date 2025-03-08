@@ -41,7 +41,7 @@ public class OfferStatusServlet extends HttpServlet {
         int candidatureId = Integer.parseInt(request.getParameter("candidatureId"));
         String newStatus = request.getParameter("status");
 
-        offerStatusDAO.updateStatus(candidatureId, newStatus);
+//        offerStatusDAO.updateStatus(candidatureId, newStatus);
         response.sendRedirect("OfferStatusServlet?jobId=" + request.getParameter("jobId"));
     }
 }
