@@ -43,7 +43,7 @@ public class CandidateServlet extends HttpServlet {
         resp.sendRedirect("dashbordCondidature.jsp?success=1");
     }
 }
-=======
+
 //package Candidature.Candidate.Web;
 //
 //import Candidature.Candidate.DAO.CandidateDAO;
