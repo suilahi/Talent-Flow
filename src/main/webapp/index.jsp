@@ -11,27 +11,27 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #FAFAFA; /* Pale Ivory */
-            color: #607D8B; /* Slate Gray */
+            background-color: #FAFAFA;
+            color: #607D8B;
             min-height: 100vh;
             margin: 0;
         }
         .navbar {
-            background-color: #607D8B; /* Slate Gray */
+            background-color: #607D8B;
             padding: 1rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
             font-weight: 600;
             font-size: 1.8rem;
-            color: #FAFAFA !important; /* Pale Ivory */
+            color: #FAFAFA !important;
             transition: transform 0.3s;
         }
         .navbar-brand:hover {
             transform: scale(1.05);
         }
         .nav-link {
-            color: #FAFAFA !important; /* Pale Ivory */
+            color: #FAFAFA !important;
             font-weight: 400;
             margin: 0 10px;
             padding: 8px 15px;
@@ -39,7 +39,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
         .nav-link:hover {
-            background-color: #90CAF9; /* Soft Blue */
+            background-color: #90CAF9;
             color: #FFFFFF !important;
         }
         .navbar-toggler {
@@ -47,14 +47,14 @@
         }
         .jobs-section {
             padding: 60px 0;
-            background: linear-gradient(to right, #FAFAFA, #B2DFDB); /* Pale Ivory to Mint Green */
+            background: linear-gradient(to right, #FAFAFA, #B2DFDB);
         }
         .job-card {
-            background: #B2DFDB; /* Mint Green */
+            background: #B2DFDB;
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            color: #607D8B; /* Slate Gray */
+            color: #607D8B;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
             opacity: 0;
@@ -74,7 +74,7 @@
             margin-bottom: 15px;
         }
         .btn-apply {
-            background-color: #90CAF9; /* Soft Blue */
+            background-color: #90CAF9;
             border: none;
             padding: 10px 25px;
             border-radius: 20px;
@@ -82,7 +82,7 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         .btn-apply:hover {
-            background-color: #42A5F5; /* Slightly darker Soft Blue */
+            background-color: #42A5F5;
             transform: translateY(-2px);
             color: #FFFFFF;
         }
@@ -91,13 +91,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
         footer {
-            background-color: #00695C; /* Deep Teal */
-            color: #FAFAFA; /* Pale Ivory */
+            background-color: #00695C;
+            color: #FAFAFA;
             padding: 25px 0;
             margin-top: 60px;
             text-align: center;
         }
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .navbar-nav {
                 text-align: center;
@@ -112,7 +111,7 @@
     </style>
 </head>
 <body>
-<!-- Responsive Navbar with All Links -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="index.jsp">TalentFlow</a>
@@ -122,24 +121,12 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="offerEmploi.jsp">Offres d'Emploi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Offrelist.jsp">Liste des Offres</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="candidat.jsp">Espace Candidat</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.jsp">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.jsp">Inscription</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="offerEmploi.jsp">Offres d'Emploi</a></li>
+                <li class="nav-item"><a class="nav-link" href="Offrelist.jsp">Liste des Offres</a></li>
+                <li class="nav-item"><a class="nav-link" href="candidat.jsp">Espace Candidat</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.jsp">Inscription</a></li>
             </ul>
         </div>
     </div>
@@ -157,15 +144,15 @@
                         <p class="job-description">${job.description}</p>
                         <p><strong>Date de publication :</strong> ${job.publicationDate}</p>
                         <form action="postuler" method="post">
-                            <input type="hidden" name="jobId" value="<%= job.getId() %>">
-                            <a href="dashbordCondidature.jsp" class="btn btn-apply" >Postuler</a>
+                            <input type="hidden" name="jobId" value="${job.id}">
+                            <button type="submit" class="btn btn-apply">Postuler</button>
                         </form>
                     </div>
                 </div>
             </c:forEach>
             <c:if test="${empty jobOffers}">
                 <div class="col-12 text-center">
-                    <p>Aucune offre d emploi disponible pour le moment.</p>
+                    <p>Aucune offre d'emploi disponible pour le moment.</p>
                 </div>
             </c:if>
         </div>

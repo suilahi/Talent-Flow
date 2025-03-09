@@ -38,7 +38,7 @@ public class CandidateServlet extends HttpServlet {
             return;
         }
 
-        candidateApplicationDAO.Postuler(candidateId,jobId);
+        candidateApplicationDAO.postuler(candidateId,jobId);
         resp.sendRedirect("dashbordCondidature.jsp?success=1");
     }
 }

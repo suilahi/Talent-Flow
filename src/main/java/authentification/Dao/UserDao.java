@@ -11,7 +11,7 @@ import java.util.List;
 
 import Utils.DBConnection;
 
-public class UserDao {
+public class    UserDao {
 
     private Connection connection;
 
