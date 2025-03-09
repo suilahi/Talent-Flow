@@ -29,9 +29,12 @@ public class User {
         this.role = role;
     }
 
-    public User(){
+    public User(String name, String email, String password){
     }
 
+    public User(int id, String name, String email) {
+
+    }
 
 
     //Getter and Setter

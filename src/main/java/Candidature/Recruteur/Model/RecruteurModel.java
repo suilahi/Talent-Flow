@@ -14,7 +14,8 @@ public class RecruteurModel extends User {
 
     public RecruteurModel(int id, String name, String email, String password, String company) {
 
-        super(name, email);
+        super(name, email,password);
+        this.company = company;
     }
 
     public String getCompany() {
