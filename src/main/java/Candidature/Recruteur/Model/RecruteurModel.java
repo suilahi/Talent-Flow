@@ -8,7 +8,7 @@ public class RecruteurModel extends User {
 
 
     public RecruteurModel(int id, String name, String email, String password,String role ,String company) {
-        super(id, name, email);
+        super(name, email);
         this.company = company;
     }
 

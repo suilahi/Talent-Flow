@@ -74,7 +74,7 @@
         </div>
         <div class="mb-3">
             <label for="recruiter_id" class="form-label">Recruteur ID :</label>
-            <input type="number" id="recruiter_id" name="recruiter_id" class="form-control" value="<%= offre.getRecruiter() %>" readonly>
+            <input type="number" id="recruiter_id" name="recruiter_id" class="form-control" value="<%= offre.setRecruteur(offre.getId()) %>" readonly>
         </div>
         <button type="submit" class="btn btn-update">Mettre à jour</button>
     </form>

@@ -30,15 +30,15 @@ public class OffreEmploiServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         try {
-            if ("list".equals(action) || action == null) { // Default to list
+            if ("list".equals(action) || action == null) {
                 List<OffreEmploi> offres = offreEmploiDAO.getAllOffres();
-                request.setAttribute("offreEmploi", offres); // Matches offerEmploi.jsp
+                request.setAttribute("offreEmploi", offres);
                 request.getRequestDispatcher("/offerEmploi.jsp").forward(request, response);
-            } else if ("edit".equals(action)) { // Load offer for editing
+            } else if ("edit".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 OffreEmploi offre = offreEmploiDAO.getOffreById(id);
                 if (offre != null) {
-                    request.setAttribute("offre", offre); // Matches updateOffer.jsp
+                    request.setAttribute("offre", offre);
                     request.getRequestDispatcher("/updateOffer.jsp").forward(request, response);
                 } else {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Offer not found");
