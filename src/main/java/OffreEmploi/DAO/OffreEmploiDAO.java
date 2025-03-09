@@ -47,6 +47,7 @@ public class OffreEmploiDAO {
         List<OffreEmploi> offres = new ArrayList<>();
         String query = "SELECT * FROM job_offers";
         try (PreparedStatement stmt = connection.prepareStatement(query);
+
              ResultSet resultSet = stmt.executeQuery()) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -55,6 +56,7 @@ public class OffreEmploiDAO {
                 int recruiterId = resultSet.getInt("recruiter_id");
                 OffreEmploi offre = new OffreEmploi(id, title, description, recruiterId);
                 offres.add(offre);
+                System.out.println(offre.toString());
             }
         }
         return offres;
