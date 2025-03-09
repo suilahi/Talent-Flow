@@ -14,7 +14,7 @@ public class User {
 
 
 
-    public User(int id,String name, String email, String password, String role) {
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
         this.password = password;
