@@ -30,8 +30,9 @@ public class CandidateDAO {
 
         }
     }
+
     // postuler a une offre d'emploi
-    public void postuler (Candidat candidat) throws SQLException {
+    public void postuler(Candidat candidat) throws SQLException {
 
         String query = "INSERT INTO candidates (phone, cv) VALUES (?, ?)";
 
@@ -44,12 +45,7 @@ public class CandidateDAO {
 
     public void postuler(Integer candidateId, int jobId) {
 
-    }
-}
 
-
-
-=======
 //package Candidature.Candidate.DAO;
 //
 //import Utils.DBConnection;
@@ -209,3 +205,5 @@ public class CandidateDAO {
 //            e.printStackTrace();
 //        }
 //    }
+    }
+}
