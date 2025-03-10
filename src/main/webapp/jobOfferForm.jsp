@@ -1,14 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="authentification.Model.User" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
-<%
-  HttpSession sessionObj = request.getSession(false);
-  User user = (sessionObj != null) ? (User) sessionObj.getAttribute("user") : null;
-  if (user == null || !"recruiter".equals(user.getRole())) {
-    response.sendRedirect("index.jsp");
-    return;
-  }
-%>
+<%@ page import="authentification.Model.*" %>
+<%--<%--%>
+<%--  HttpSession sessionObj = request.getSession(false);--%>
+<%--  User user = (sessionObj != null) ? (User) sessionObj.getAttribute("user") : null;--%>
+<%--  if (user == null || !"recruiter".equals(user.getRole())) {--%>
+<%--    response.sendRedirect("index.jsp");--%>
+<%--    return;--%>
+<%--  }--%>
+<%--%>--%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -67,7 +68,7 @@
     </div>
     <div class="mb-3">
       <label for="recruiter_id" class="form-label">Recruteur ID :</label>
-      <input type="number" id="recruiter_id" name="recruiter_id" class="form-control" value="<%= user.getId() %>" readonly>
+      <input type="number" id="recruiter_id" name="recruiter_id" class="form-control" value="<%= User.getId() %>" readonly>
     </div>
     <button type="submit" class="btn btn-create">Créer l'Offre</button>
   </form>

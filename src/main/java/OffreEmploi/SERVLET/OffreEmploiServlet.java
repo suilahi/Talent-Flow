@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/jobOffers")
+@WebServlet("/OffreEmploiServlet")
 public class OffreEmploiServlet extends HttpServlet {
     private OffreEmploiDAO offreEmploiDAO;
 
