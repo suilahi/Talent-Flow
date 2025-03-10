@@ -30,19 +30,18 @@ public class CandidateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
 
-        HttpSession session= req.getSession();
-        Integer candidateId=(Integer) session.getAttribute("userID");
-        int jobId=Integer.parseInt(req.getParameter("jobId"));
+        HttpSession session = req.getSession();
+        Integer candidateId = (Integer) session.getAttribute("userID");
+        int jobId = Integer.parseInt(req.getParameter("jobId"));
 
-        if(candidateId==null){
+        if (candidateId == null) {
             resp.sendRedirect("login.jsp");
             return;
         }
 
-        candidateApplicationDAO.postuler(candidateId,jobId);
+        candidateApplicationDAO.postuler(candidateId, jobId);
         resp.sendRedirect("dashbordCondidature.jsp?success=1");
-    }
-}
+
 
 //package Candidature.Candidate.Web;
 //
@@ -88,3 +87,4 @@ public class CandidateServlet extends HttpServlet {
 //        resp.sendRedirect("dashbordCondidature.jsp?success=1");
 //    }
 //}
+

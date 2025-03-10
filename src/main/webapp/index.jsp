@@ -122,7 +122,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="offerEmploi.jsp">Offres d'Emploi</a></li>
+                <li class="nav-item"><a class="nav-link" href="offer.jsp">Offres d'Emploi</a></li>
                 <li class="nav-item"><a class="nav-link" href="Offrelist.jsp">Liste des Offres</a></li>
                 <li class="nav-item"><a class="nav-link" href="candidat.jsp">Espace Candidat</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.jsp">Connexion</a></li>

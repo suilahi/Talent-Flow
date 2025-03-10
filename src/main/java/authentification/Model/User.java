@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class User {
 
-    private int id;
+    private static int id;
     private String name;
     private String email;
     private String password;
@@ -38,7 +38,7 @@ public class User {
 
 
     //Getter and Setter
-    public int getId() {
+    public static int getId() {
 
         return id;
     }

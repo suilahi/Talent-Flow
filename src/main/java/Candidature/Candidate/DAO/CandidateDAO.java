@@ -45,7 +45,6 @@ public class CandidateDAO {
 
     public void postuler(Integer candidateId, int jobId) {
 
-
 //package Candidature.Candidate.DAO;
 //
 //import Utils.DBConnection;

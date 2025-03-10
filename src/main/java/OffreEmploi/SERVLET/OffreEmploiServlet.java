@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/jobOffers")
+@WebServlet("/OffreEmploiServlet")
 public class OffreEmploiServlet extends HttpServlet {
     private OffreEmploiDAO offreEmploiDAO;
 
@@ -32,8 +32,12 @@ public class OffreEmploiServlet extends HttpServlet {
         try {
             if ("list".equals(action) || action == null) {
                 List<OffreEmploi> offres = offreEmploiDAO.getAllOffres();
+
                 request.setAttribute("offreEmploi", offres);
                 request.getRequestDispatcher("/offerEmploi.jsp").forward(request, response);
+                for (OffreEmploi offre : offres) {
+                    System.out.println(offre.toString());
+                }
             } else if ("edit".equals(action)) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 OffreEmploi offre = offreEmploiDAO.getOffreById(id);
